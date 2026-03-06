@@ -13,7 +13,7 @@ const products = {
   ko: [
     {
       num: "01.",
-      title: "올페이셜",
+      title: "울페이셜",
       tagline: "All-in-One Hybrid\nAnti-Aging Solution",
       desc: "페이스부터 바디까지 완성되는\n프리미엄 하이브리드\n안티에이징 솔루션",
       cta: "자세히보기",
@@ -137,12 +137,22 @@ export default function Products({ locale, isActive }: { locale: Locale; isActiv
           ))}
           <div className="absolute inset-0 transition-opacity duration-500" style={{ backgroundColor: `rgba(0,0,0,0.3)` }} />
 
+          {/* 상단 dot 네비게이터 */}
+          <div className="absolute top-20 left-0 right-0 z-20 flex justify-center gap-3">
+            {items.map((_, i) => (
+              <button key={i} onClick={() => { swiperRef.current?.swiper.slideToLoop(i); }}
+                className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${hovered === i ? "bg-white scale-125" : "bg-white/40"}`} />
+            ))}
+          </div>
+
           <Swiper
             ref={swiperRef}
             modules={[EffectFade]}
             effect="fade"
             fadeEffect={{ crossFade: true }}
             speed={600}
+            loop
+            loopAdditionalSlides={1}
             className="h-full w-full relative z-10"
             onSlideChange={(swiper) => { setHovered(swiper.realIndex); setAnimKey((k) => k + 1); }}
           >

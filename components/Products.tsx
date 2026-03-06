@@ -36,21 +36,21 @@ const products = {
   en: [
     {
       num: "01.",
-      title: "All Facial",
+      title: "ULFACIAL",
       tagline: "All-in-One Hybrid\nAnti-Aging Solution",
       desc: "Premium hybrid anti-aging\nsolution from face to body",
       cta: "Learn More",
     },
     {
       num: "02.",
-      title: "Ola Wave",
+      title: "OLLA Wave",
       tagline: "Next-Generation Microwave\nEnergy Technology",
       desc: "Next-gen microwave solution\nwith Tron Digital precision\ncontrol technology",
       cta: "Learn More",
     },
     {
       num: "03.",
-      title: "Compomello Bed",
+      title: "COMFOMELLO BED",
       tagline: "Ultimate Comfort,\nPrecise Care",
       desc: "Premium vibration bed\ndesigned for comfort\nand precise care",
       cta: "Learn More",

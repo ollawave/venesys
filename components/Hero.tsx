@@ -34,8 +34,6 @@ export default function Hero({ locale, isActive }: { locale: Locale; isActive?: 
         src={isMobile ? "/videos/bg_video_mob.mp4" : "/videos/bg_video_pc.mp4"}
         autoPlay muted loop playsInline
       />
-      <div className="absolute inset-0 bg-black/50 z-10" />
-
       <div className="relative z-20 text-center px-6 md:px-16 w-full">
         <h1
           key={`h-${animKey}`}

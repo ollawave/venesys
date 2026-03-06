@@ -15,6 +15,7 @@ export default function Home() {
   const [locale, setLocale] = useState<Locale>("ko");
   const [currentSection, setCurrentSection] = useState(0);
   const [goToSection, setGoToSection] = useState<number | null>(null);
+  const [mounted, setMounted] = useState(false);
 
   const handleNavigate = (sectionIndex: number) => {
     setGoToSection(null);
@@ -22,6 +23,7 @@ export default function Home() {
   };
 
   useEffect(() => {
+    setMounted(true);
     const saved = localStorage.getItem("locale") as Locale;
     if (saved) {
       setLocale(saved);
@@ -31,6 +33,13 @@ export default function Home() {
       localStorage.setItem("locale", lang);
     }
   }, []);
+
+  const changeLocale = (newLocale: Locale) => {
+    setLocale(newLocale);
+    localStorage.setItem("locale", newLocale);
+  };
+
+  if (!mounted) return null;
 
   const changeLocale = (newLocale: Locale) => {
     setLocale(newLocale);

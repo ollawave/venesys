@@ -1,11 +1,11 @@
 "use client";
 
 import { Locale } from "@/i18n";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
+import { createPortal } from "react-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { EffectFade } from "swiper/modules";
 import type { SwiperRef } from "swiper/react";
-import { useRef } from "react";
 import "swiper/css";
 import "swiper/css/effect-fade";
 
@@ -63,7 +63,23 @@ export default function Products({ locale, isActive }: { locale: Locale; isActiv
   const [hovered, setHovered] = useState<number>(0);
   const [animKey, setAnimKey] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
+  const [showModal, setShowModal] = useState(false);
   const swiperRef = useRef<SwiperRef>(null);
+
+  const ctaLinks = [
+    { type: "url" as const, url: "https://www.ulfacial.com/" },
+    { type: "url" as const, url: "https://www.ollawave.com/" },
+    { type: "modal" as const },
+  ];
+
+  const handleCta = (index: number) => {
+    const link = ctaLinks[index];
+    if (link.type === "url") {
+      window.open(link.url, "_blank", "noopener,noreferrer");
+    } else {
+      setShowModal(true);
+    }
+  };
 
   useEffect(() => {
     const check = () => setIsMobile(window.innerWidth < 768);
@@ -105,7 +121,7 @@ export default function Products({ locale, isActive }: { locale: Locale; isActiv
         <p className="text-[18px] md:text-[25px] font-medium leading-relaxed whitespace-pre-line mb-4 md:mb-6 text-center md:text-left">{item.tagline}</p>
         <p className="text-[14px] md:text-[25px] font-light text-white/60 leading-relaxed whitespace-pre-line mb-4 md:mb-8 text-center md:text-left">{item.desc}</p>
         <div className="text-center md:text-left">
-          <a href="#" className="inline-block px-6 md:px-8 py-2 md:py-2.5 border border-white/30 text-[13px] md:text-[16px] font-bold hover:bg-white hover:text-black transition-all duration-300">{item.cta}</a>
+          <button onClick={() => handleCta(index)} className="inline-block px-6 md:px-8 py-2 md:py-2.5 border border-white/30 text-[13px] md:text-[16px] font-bold hover:bg-white hover:text-black transition-all duration-300 cursor-pointer">{item.cta}</button>
         </div>
       </div>
     </div>
@@ -114,46 +130,74 @@ export default function Products({ locale, isActive }: { locale: Locale; isActiv
   // 모바일: Swiper로 한 아이템씩
   if (isMobile) {
     return (
-      <section className="relative h-full w-full bg-white text-white overflow-hidden">
-        {bgImagesMobile.map((src, i) => (
-          <div key={i} className="absolute inset-0 bg-cover bg-center transition-opacity duration-500" style={{ backgroundImage: `url(${src})`, opacity: hovered === i ? 1 : 0 }} />
-        ))}
-        <div className="absolute inset-0 transition-opacity duration-500" style={{ backgroundColor: `rgba(0,0,0,0.3)` }} />
-
-        <Swiper
-          ref={swiperRef}
-          modules={[EffectFade]}
-          effect="fade"
-          fadeEffect={{ crossFade: true }}
-          speed={600}
-          className="h-full w-full relative z-10"
-          onSlideChange={(swiper) => { setHovered(swiper.realIndex); setAnimKey((k) => k + 1); }}
-        >
-          {items.map((item, index) => (
-            <SwiperSlide key={index}>
-              {renderItem(item, index, hovered === index)}
-            </SwiperSlide>
+      <>
+        <section className="relative h-full w-full bg-white text-white overflow-hidden">
+          {bgImagesMobile.map((src, i) => (
+            <div key={i} className="absolute inset-0 bg-cover bg-center transition-opacity duration-500" style={{ backgroundImage: `url(${src})`, opacity: hovered === i ? 1 : 0 }} />
           ))}
-        </Swiper>
-      </section>
+          <div className="absolute inset-0 transition-opacity duration-500" style={{ backgroundColor: `rgba(0,0,0,0.3)` }} />
+
+          <Swiper
+            ref={swiperRef}
+            modules={[EffectFade]}
+            effect="fade"
+            fadeEffect={{ crossFade: true }}
+            speed={600}
+            className="h-full w-full relative z-10"
+            onSlideChange={(swiper) => { setHovered(swiper.realIndex); setAnimKey((k) => k + 1); }}
+          >
+            {items.map((item, index) => (
+              <SwiperSlide key={index}>
+                {renderItem(item, index, hovered === index)}
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </section>
+        {showModal && <ComfModal onClose={() => setShowModal(false)} />}
+      </>
     );
   }
 
   // PC: 기존 3열 hover 방식
   return (
-    <section className="relative h-full w-full flex flex-row bg-black text-white overflow-hidden">
-      {bgImages.map((src, i) => (
-        <div key={i} className="absolute inset-0 bg-cover bg-center transition-opacity duration-500" style={{ backgroundImage: `url(${src})`, opacity: hovered === i ? 1 : 0 }} />
-      ))}
-      {items.map((item, index) => {
-        const isItemActive = hovered === index;
-        return (
-          <div key={index} className="relative flex-1 h-full cursor-pointer z-10 transition-all duration-500" onMouseEnter={() => setHovered(index)}>
-            <div className="absolute inset-0 transition-opacity duration-500" style={{ backgroundColor: `rgba(0,0,0,${isItemActive ? 0.2 : 0.58})` }} />
-            {renderItem(item, index, isItemActive)}
-          </div>
-        );
-      })}
-    </section>
+    <>
+      <section className="relative h-full w-full flex flex-row bg-black text-white overflow-hidden">
+        {bgImages.map((src, i) => (
+          <div key={i} className="absolute inset-0 bg-cover bg-center transition-opacity duration-500" style={{ backgroundImage: `url(${src})`, opacity: hovered === i ? 1 : 0 }} />
+        ))}
+        {items.map((item, index) => {
+          const isItemActive = hovered === index;
+          return (
+            <div key={index} className="relative flex-1 h-full cursor-pointer z-10 transition-all duration-500" onMouseEnter={() => setHovered(index)}>
+              <div className="absolute inset-0 transition-opacity duration-500" style={{ backgroundColor: `rgba(0,0,0,${isItemActive ? 0.2 : 0.58})` }} />
+              {renderItem(item, index, isItemActive)}
+            </div>
+          );
+        })}
+      </section>
+      {showModal && <ComfModal onClose={() => setShowModal(false)} />}
+    </>
+  );
+}
+
+function ComfModal({ onClose }: { onClose: () => void }) {
+  return createPortal(
+    <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/70" onClick={onClose}>
+      <div className="relative max-w-3xl w-[90%] max-h-[85vh]" onClick={(e) => e.stopPropagation()}>
+        <button
+          onClick={onClose}
+          className="absolute -top-10 right-0 text-white text-3xl hover:text-[#F8B62D] transition cursor-pointer"
+          aria-label="Close"
+        >
+          ✕
+        </button>
+        <img
+          src="/images/about/comf.jpeg"
+          alt="Compomello Bed"
+          className="w-full h-auto max-h-[85vh] object-contain"
+        />
+      </div>
+    </div>,
+    document.body
   );
 }

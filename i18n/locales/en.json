@@ -1,0 +1,57 @@
+{
+  "nav": {
+    "home": "Home",
+    "products": "Products",
+    "about": "About",
+    "media": "Media",
+    "contact": "Contact",
+    "lang": "English"
+  },
+  "hero": {
+    "title": "Medical Technology",
+    "subtitle": "for a Better Lifestyle",
+    "desc": "VENESYS develop and manufacture\nprofessional aesthetic medical devices\ngrounded in clinical expertise\nand engineering excellence.\nDesigned to deliver\nsafe, effective,\nand reliable skin care solutions."
+  },
+  "about": {
+    "label": "ABOUT US",
+    "title": "The Standard of Innovation\nfor Better Skin Health",
+    "desc": "VENESYS sets new standards in aesthetic medical devices through relentless innovation, built on precision technology and aesthetics."
+  },
+  "business": {
+    "label": "ABOUT",
+    "category": "Medical-Grade Aesthetic Devices",
+    "badge": "Medical-Grade\nDevices",
+    "desc": "We research and develop aesthetic medical devices that prioritize safety and efficacy, grounded in clinical expertise and engineering excellence. We provide highly reliable medical solutions for professionals."
+  },
+  "sns": {
+    "label": "SNS",
+    "desc": "Discover diverse content on VENESYS SNS channels."
+  },
+  "inquiry": {
+    "label": "INQUIRY",
+    "category": "Aesthetic Medical Devices",
+    "desc": "Curious about VENESYS products and solutions? Leave your inquiry and our expert team will respond promptly.",
+    "cs": "C/S : 82-2-6215-3681",
+    "email": "Email : venesys.cs@venesys.co.kr",
+    "name": "Name (Required)",
+    "emailField": "Email (Required)",
+    "phone": "Phone (Required)",
+    "country": "Country (Required)",
+    "subject": "Subject (Required)",
+    "message": "Message",
+    "privacy": "I agree to the collection and use of personal information. (Required)",
+    "submit": "Submit Inquiry"
+  },
+  "footer": {
+    "company": "VENESYS Co., Ltd.",
+    "copyright": "ⓒ 2026 VENESYS Co., Ltd. All rights reserved",
+    "bizNum": "Business Registration",
+    "bizNumVal": "361-81-03575",
+    "privacy": "Privacy Officer",
+    "privacyVal": "Yongseob Ahn",
+    "contact": "Contact",
+    "contactEmail": "E.  venesys.cs@venesys.co.kr",
+    "contactTel": "T.  82-2-6215-3681",
+    "contactMobile": "M. 82-10-9688-0673"
+  }
+}

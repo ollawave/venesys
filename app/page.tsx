@@ -41,11 +41,6 @@ export default function Home() {
 
   if (!mounted) return null;
 
-  const changeLocale = (newLocale: Locale) => {
-    setLocale(newLocale);
-    localStorage.setItem("locale", newLocale);
-  };
-
   return (
     <>
       <Navigation locale={locale} onLocaleChange={changeLocale} isFirstSection={currentSection === 0} currentSection={currentSection} onNavigate={handleNavigate} />

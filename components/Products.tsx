@@ -16,14 +16,14 @@ const products = {
       title: "울페이셜",
       tagline: "All-in-One Hybrid\nAnti-Aging Solution",
       desc: "페이스부터 바디까지 완성되는\n프리미엄 하이브리드\n안티에이징 솔루션",
-      cta: "자세히보기",
+      cta: "홈페이지 바로가기",
     },
     {
       num: "02.",
       title: "올라 웨이브",
       tagline: "Next-Generation Microwave\nEnergy Technology",
       desc: "극초단파 기술과 Tron Digital\n방식을 적용한 정밀 제어 기반의\n차세대 마이크로웨이브 솔루션",
-      cta: "자세히보기",
+      cta: "홈페이지 바로가기",
     },
     {
       num: "03.",
@@ -39,14 +39,14 @@ const products = {
       title: "ULFACIAL",
       tagline: "All-in-One Hybrid\nAnti-Aging Solution",
       desc: "Premium hybrid anti-aging\nsolution from face to body",
-      cta: "Learn More",
+      cta: "GO TO WEBSITE",
     },
     {
       num: "02.",
       title: "OLLA Wave",
       tagline: "Next-Generation Microwave\nEnergy Technology",
       desc: "Next-gen microwave solution\nwith Tron Digital precision\ncontrol technology",
-      cta: "Learn More",
+      cta: "GO TO WEBSITE",
     },
     {
       num: "03.",
@@ -116,10 +116,10 @@ export default function Products({ locale, isActive }: { locale: Locale; isActiv
           {item.title}
         </h3>
       </div>
-      <div className={`transition-all duration-500 mt-6 md:mt-10 ${isItemActive ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4 pointer-events-none"}`}>
-        <div className="w-8 h-px bg-white/40 mb-4 md:mb-6 mx-auto md:mx-0" />
+      <div className={`transition-all duration-500 mt-6 md:mt-30 ${isItemActive ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4 pointer-events-none"}`}>
+        <div className="w-8 h-px bg-[#FEFEFE] mb-4 md:mb-10 mx-auto md:mx-0" />
         <p className="text-[18px] md:text-[25px] font-medium leading-relaxed whitespace-pre-line mb-4 md:mb-6 text-center md:text-left">{item.tagline}</p>
-        <p className="text-[14px] md:text-[25px] font-light text-white/60 leading-relaxed whitespace-pre-line mb-4 md:mb-8 text-center md:text-left">{item.desc}</p>
+        <p className="text-[14px] md:text-[25px] font-light text-[#FFFFFF] leading-relaxed whitespace-pre-line mb-4 md:mb-25 text-center md:text-left">{item.desc}</p>
         <div className="text-center md:text-left">
           <button onClick={() => handleCta(index)} className="inline-block px-6 md:px-8 py-2 md:py-2.5 border border-white/30 text-[13px] md:text-[16px] font-bold hover:bg-white hover:text-black transition-all duration-300 cursor-pointer">{item.cta}</button>
         </div>

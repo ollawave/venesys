@@ -13,13 +13,13 @@ export default function Footer({ locale }: { locale: Locale }) {
           <p className="text-[12px] text-white/60 mb-5">{t.footer.copyright}</p>
           {/* SNS 아이콘 */}
           <div className="flex items-center gap-3">
-            <a href="#" className="w-8 h-8 rounded-full border border-white/30 flex items-center justify-center hover:border-white transition">
+            <a href="https://www.youtube.com/@VENESYS-Corp" target="_blank" rel="noopener noreferrer" className="w-8 h-8 rounded-full border border-white/30 flex items-center justify-center hover:border-white transition">
               <img src="/images/social/img-youtube.png" alt="YouTube" className="w-4 h-4" />
             </a>
-            <a href="#" className="w-8 h-8 rounded-full border border-white/30 flex items-center justify-center hover:border-white transition">
+            <a href="https://www.instagram.com/venesys.corp" target="_blank" rel="noopener noreferrer" className="w-8 h-8 rounded-full border border-white/30 flex items-center justify-center hover:border-white transition">
               <img src="/images/social/img-insta.png" alt="Instagram" className="w-4 h-4" />
             </a>
-            <a href="#" className="w-8 h-8 rounded-full border border-white/30 flex items-center justify-center hover:border-white transition">
+            <a href="https://pf.kakao.com/_GSIAX" target="_blank" rel="noopener noreferrer" className="w-8 h-8 rounded-full border border-white/30 flex items-center justify-center hover:border-white transition">
               <img src="/images/social/img-kakao.png" alt="Kakao" className="w-4 h-4" />
             </a>
           </div>

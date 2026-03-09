@@ -1,10 +1,10 @@
 {
   "nav": {
-    "home": "Home",
-    "products": "Products",
-    "about": "About",
-    "media": "Media",
-    "contact": "Contact",
+    "home": "HOME",
+    "products": "PRODUCTS",
+    "about": "ABOUT US",
+    "media": "MEDIA",
+    "contact": "CONTACT US",
     "lang": "English"
   },
   "hero": {

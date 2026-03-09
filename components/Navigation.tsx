@@ -70,13 +70,13 @@ export default function Navigation({ locale, onLocaleChange, isFirstSection = tr
                     onClick={() => { onLocaleChange("ko"); setLangOpen(false); }}
                     className={`block w-full text-left px-4 py-2 text-[14px] transition ${locale === "ko" ? "text-[#F8B62D]" : "text-white hover:text-[#F8B62D]"}`}
                   >
-                    한국어
+                    KOR
                   </button>
                   <button
                     onClick={() => { onLocaleChange("en"); setLangOpen(false); }}
                     className={`block w-full text-left px-4 py-2 text-[14px] transition ${locale === "en" ? "text-[#F8B62D]" : "text-white hover:text-[#F8B62D]"}`}
                   >
-                    English
+                    ENG
                   </button>
                 </div>
               )}
@@ -111,10 +111,10 @@ export default function Navigation({ locale, onLocaleChange, isFirstSection = tr
             ))}
             <div className="flex gap-3 pt-3 border-t border-white/10">
               <button onClick={() => { onLocaleChange("ko"); setIsOpen(false); }}
-                className={`text-[14px] ${locale === "ko" ? "text-[#F8B62D]" : "text-white"}`}>한국어</button>
+                className={`text-[14px] ${locale === "ko" ? "text-[#F8B62D]" : "text-white"}`}>KOR</button>
               <span className="text-white/20">|</span>
               <button onClick={() => { onLocaleChange("en"); setIsOpen(false); }}
-                className={`text-[14px] ${locale === "en" ? "text-[#F8B62D]" : "text-white"}`}>English</button>
+                className={`text-[14px] ${locale === "en" ? "text-[#F8B62D]" : "text-white"}`}>ENG</button>
             </div>
           </div>
         </div>

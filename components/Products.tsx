@@ -112,16 +112,16 @@ export default function Products({ locale, isActive }: { locale: Locale; isActiv
     <div className="relative z-10 h-full flex flex-col justify-center p-6 md:p-8 lg:p-12">
       <div>
         <p key={`n-${animKey}-${index}`} className={`text-[16px] md:text-[20px] text-white mb-1 hidden md:block ${animKey > 0 ? "animate-fadeSlideUp" : "opacity-0"}`} style={{ animationDelay: `${index * 100}ms` }}>{item.num}</p>
-        <h3 key={`t-${animKey}-${index}`} className={`text-[28px] md:text-[40px] font-medium text-center md:text-left ${animKey > 0 ? "animate-fadeSlideUp" : "opacity-0"}`} style={{ letterSpacing: "-1px", animationDelay: `${index * 100 + 150}ms` }}>
+        <h3 key={`t-${animKey}-${index}`} className={`text-[40px] md:text-[40px] font-medium text-center md:text-left ${animKey > 0 ? "animate-fadeSlideUp" : "opacity-0"}`} style={{ letterSpacing: "-1px", animationDelay: `${index * 100 + 150}ms` }}>
           {item.title}
         </h3>
       </div>
-      <div className={`transition-all duration-500 mt-6 md:mt-30 ${isItemActive ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4 pointer-events-none"}`}>
-        <div className="w-8 h-px bg-[#FEFEFE] mb-4 md:mb-10 mx-auto md:mx-0" />
-        <p className="text-[18px] md:text-[25px] font-medium leading-relaxed whitespace-pre-line mb-4 md:mb-6 text-center md:text-left">{item.tagline}</p>
-        <p className="text-[14px] md:text-[25px] font-light text-[#FFFFFF] leading-relaxed whitespace-pre-line mb-4 md:mb-25 text-center md:text-left">{item.desc}</p>
+      <div className={`transition-all duration-500 mt-30 md:mt-30 ${isItemActive ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4 pointer-events-none"}`}>
+        <div className="hidden md:block w-8 h-px bg-[#FEFEFE] mb-4 md:mb-10 mx-auto md:mx-0" />
+        <p className="text-[25px] md:text-[25px] font-medium leading-relaxed whitespace-pre-line mb-4 md:mb-6 text-center md:text-left">{item.tagline}</p>
+        <p className="text-[25px] md:text-[25px] font-light text-[#FFFFFF] leading-relaxed whitespace-pre-line mb-25 md:mb-25 text-center md:text-left">{item.desc}</p>
         <div className="text-center md:text-left">
-          <button onClick={() => handleCta(index)} className="inline-block px-6 md:px-8 py-2 md:py-2.5 border border-white/30 text-[13px] md:text-[16px] font-bold hover:bg-white hover:text-black transition-all duration-300 cursor-pointer">{item.cta}</button>
+          <button onClick={() => handleCta(index)} className="inline-block px-8 md:px-8 py-4 md:py-4 border border-white text-[16px] md:text-[16px] font-bold hover:bg-white hover:text-black transition-all duration-300 cursor-pointer">{item.cta}</button>
         </div>
       </div>
     </div>
@@ -138,10 +138,10 @@ export default function Products({ locale, isActive }: { locale: Locale; isActiv
           <div className="absolute inset-0 transition-opacity duration-500" style={{ backgroundColor: `rgba(0,0,0,0.3)` }} />
 
           {/* 상단 dot 네비게이터 */}
-          <div className="absolute top-20 left-0 right-0 z-20 flex justify-center gap-3">
+          <div className="absolute top-30 left-0 right-0 z-20 flex justify-center gap-3">
             {items.map((_, i) => (
               <button key={i} onClick={() => { swiperRef.current?.swiper.slideToLoop(i); }}
-                className={`w-2.5 h-2.5 rounded-full transition-all duration-300 ${hovered === i ? "bg-white scale-125" : "bg-white/40"}`} />
+                className={`w-1.5 h-1.5 rounded-full transition-all duration-300 ${hovered === i ? "bg-white scale-125" : "bg-white/40"}`} />
             ))}
           </div>
 

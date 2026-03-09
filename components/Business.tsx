@@ -143,7 +143,7 @@ export default function Business({ locale, isActive }: { locale: Locale; isActiv
               <div className="relative z-10 h-full flex flex-col justify-center px-6 md:pl-16 md:pr-12 py-6 md:py-20">
                 <p
                   key={`label-${animKey}-${index}`}
-                  className={`text-[28px] md:text-[70px] font-normal mb-3 md:mb-40 ${animKey > 0 && activeIndex === index ? "animate-fadeSlideUp" : "opacity-0"}`}
+                  className={`text-[35px] md:text-[70px] font-normal mb-9 md:mb-40 ${animKey > 0 && activeIndex === index ? "animate-fadeSlideUp" : "opacity-0"}`}
                   style={{ letterSpacing: "-2px", color: item.labelColor, animationDelay: "0ms" }}
                 >
                   {item.label}
@@ -159,14 +159,14 @@ export default function Business({ locale, isActive }: { locale: Locale; isActiv
                 )}
                 <h3
                   key={`tag-${animKey}-${index}`}
-                  className={`text-[18px] md:text-[40px] font-medium leading-tight whitespace-pre-line text-gray-900 mb-2 md:mb-20 ${animKey > 0 && activeIndex === index ? "animate-fadeSlideUp" : "opacity-0"}`}
+                  className={`text-[20px] md:text-[40px] font-medium leading-tight whitespace-pre-line text-gray-900 mb-4 md:mb-20 ${animKey > 0 && activeIndex === index ? "animate-fadeSlideUp" : "opacity-0"}`}
                   style={{ letterSpacing: "-1px", animationDelay: "200ms" }}
                 >
                   {item.tagline}
                 </h3>
                 <p
                   key={`desc-${animKey}-${index}`}
-                  className={`text-[12px] md:text-[20px] font-light leading-[1.69] text-[#1E1E1E] whitespace-pre-line ${animKey > 0 && activeIndex === index ? "animate-fadeSlideUp" : "opacity-0"}`}
+                  className={`text-[13px] md:text-[20px] font-light leading-[1.69] text-[#1E1E1E] whitespace-pre-line ${animKey > 0 && activeIndex === index ? "animate-fadeSlideUp" : "opacity-0"}`}
                   style={{ animationDelay: "350ms" }}
                 >
                   {item.desc}

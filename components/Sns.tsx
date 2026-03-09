@@ -37,7 +37,7 @@ export default function Sns({ locale, isActive }: { locale: Locale; isActive?: b
           <h2 key={`sh-${animKey}`} className={`text-[28px] md:text-[70px] font-normal mb-3 md:mb-6 ${animKey > 0 ? "animate-fadeSlideUp" : "opacity-0"}`} style={{ letterSpacing: "-1.9px", animationDelay: "0ms" }}>
             {t.sns.label}
           </h2>
-          <p key={`sp-${animKey}`} className={`text-[13px] md:text-lg font-light text-white/80 ${animKey > 0 ? "animate-fadeSlideUp" : "opacity-0"}`} style={{ letterSpacing: "-1.1px", animationDelay: "200ms" }}>
+          <p key={`sp-${animKey}`} className={`text-[13px] md:text-lg font-light text-white ${animKey > 0 ? "animate-fadeSlideUp" : "opacity-0"}`} style={{ letterSpacing: "-1.1px", animationDelay: "200ms" }}>
             {t.sns.desc}
           </p>
         </div>

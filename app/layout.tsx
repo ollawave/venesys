@@ -19,6 +19,11 @@ export const metadata: Metadata = {
     description: "(주)베네시스(VENSYS)는 첨단 피부미용 의료기기 연구·개발·제조 전문 기업입니다.",
     images: [{ url: "/images/og-img.png", width: 1200, height: 630 }],
   },
+  verification: {
+    other: {
+      "naver-site-verification": "0147b39a2c18eed06eaa5b2648bdc281fa54c4a5",
+    },
+  },
 };
 
 export default function RootLayout({

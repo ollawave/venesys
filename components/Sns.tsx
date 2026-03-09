@@ -44,9 +44,9 @@ export default function Sns({ locale, isActive }: { locale: Locale; isActive?: b
 
         <div key={`sw-${animKey}`} className={`pl-6 md:pl-16 ${animKey > 0 ? "animate-fadeSlideUp" : "opacity-0"}`} style={{ animationDelay: "300ms" }}>
           <Swiper
-            spaceBetween={20}
-            slidesPerView={1.8}
-            slidesOffsetAfter={24}
+            spaceBetween={16}
+            slidesPerView={1.4}
+            slidesOffsetAfter={16}
             breakpoints={{
               640: { slidesPerView: 2.8, spaceBetween: 40, slidesOffsetAfter: 40 },
               1024: { slidesPerView: 3.8, spaceBetween: 84, slidesOffsetAfter: 64 },

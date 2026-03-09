@@ -178,7 +178,7 @@ export default function Products({ locale, isActive }: { locale: Locale; isActiv
         {items.map((item, index) => {
           const isItemActive = hovered === index;
           return (
-            <div key={index} className="relative flex-1 h-full cursor-pointer z-10 transition-all duration-500" onMouseEnter={() => setHovered(index)}>
+            <div key={index} className="relative flex-1 h-full cursor-pointer z-10 transition-all duration-500 border-r border-white last:border-r-0" onMouseEnter={() => setHovered(index)}>
               <div className="absolute inset-0 transition-opacity duration-500" style={{ backgroundColor: `rgba(0,0,0,${isItemActive ? 0.2 : 0.58})` }} />
               {renderItem(item, index, isItemActive)}
             </div>

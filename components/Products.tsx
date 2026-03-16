@@ -138,7 +138,7 @@ export default function Products({ locale, isActive }: { locale: Locale; isActiv
           <div className="absolute inset-0 transition-opacity duration-500" style={{ backgroundColor: `rgba(0,0,0,0.3)` }} />
 
           {/* 좌측 하단 화살표 네비게이터 */}
-          <div className="absolute bottom-4 left-4 z-20 flex items-center gap-0">
+          <div className="absolute bottom-0 left-0 z-20 flex items-center gap-0">
             <button onClick={() => swiperRef.current?.swiper.slidePrev()}
               className="w-10 h-10 bg-[#4B4B4B] hover:bg-black flex items-center justify-center transition cursor-pointer">
               <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">

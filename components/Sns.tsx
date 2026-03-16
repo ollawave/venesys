@@ -3,13 +3,44 @@
 import { Locale, translations } from "@/i18n";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { useState, useEffect } from "react";
+import { supabase } from "@/lib/supabase";
 import type { SwiperClass } from "swiper/react";
 import "swiper/css";
+
+interface SnsItem {
+  id: number;
+  title: string;
+  url: string;
+  thumbnail_url: string;
+  is_visible: boolean;
+  sort_order: number;
+}
+
+// 정적 폴백 (DB 연결 안 될 때)
+const fallbackItems: SnsItem[] = [
+  { id: 1, title: "", url: "#", thumbnail_url: "/images/social/img-sns01.png", is_visible: true, sort_order: 0 },
+  { id: 2, title: "", url: "#", thumbnail_url: "/images/social/img-sns02.png", is_visible: true, sort_order: 1 },
+  { id: 3, title: "", url: "#", thumbnail_url: "/images/social/img-sns03.png", is_visible: true, sort_order: 2 },
+  { id: 4, title: "", url: "#", thumbnail_url: "/images/social/img-sns04.png", is_visible: true, sort_order: 3 },
+];
 
 export default function Sns({ locale, isActive }: { locale: Locale; isActive?: boolean }) {
   const t = translations[locale];
   const [progress, setProgress] = useState(0);
   const [animKey, setAnimKey] = useState(0);
+  const [items, setItems] = useState<SnsItem[]>(fallbackItems);
+
+  useEffect(() => {
+    const fetchItems = async () => {
+      const { data } = await supabase
+        .from("sns_items")
+        .select("*")
+        .eq("is_visible", true)
+        .order("sort_order", { ascending: true });
+      if (data && data.length > 0) setItems(data);
+    };
+    fetchItems();
+  }, []);
 
   useEffect(() => {
     if (isActive) {
@@ -18,13 +49,6 @@ export default function Sns({ locale, isActive }: { locale: Locale; isActive?: b
       return () => clearTimeout(timer);
     }
   }, [isActive]);
-
-  const items = [
-    { id: 1, image: "/images/social/img-sns01.png" },
-    { id: 2, image: "/images/social/img-sns02.png" },
-    { id: 3, image: "/images/social/img-sns03.png" },
-    { id: 4, image: "/images/social/img-sns04.png" },
-  ];
 
   const handleProgress = (swiper: SwiperClass) => {
     setProgress(swiper.progress);
@@ -56,9 +80,14 @@ export default function Sns({ locale, isActive }: { locale: Locale; isActive?: b
           >
             {items.map((item) => (
               <SwiperSlide key={item.id}>
-                <div className="relative aspect-square bg-white/10 overflow-hidden cursor-pointer">
-                  <img src={item.image} alt="" className="w-full h-full object-cover" />
-                </div>
+                <a
+                  href={item.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="relative aspect-square bg-white/10 overflow-hidden cursor-pointer block"
+                >
+                  <img src={item.thumbnail_url} alt={item.title || ""} className="w-full h-full object-cover" />
+                </a>
               </SwiperSlide>
             ))}
           </Swiper>

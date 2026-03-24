@@ -1,2 +1,4 @@
 User-agent: *
 Allow: /
+
+Sitemap: https://venesys.co.kr/sitemap.xml

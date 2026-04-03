@@ -113,11 +113,11 @@ export default function FullPageScroll({ children, lastSectionAuto = false, onSe
   const dotCount = lastSectionAuto ? totalSections - 1 : totalSections;
 
   return (
-    <div className="fixed inset-0 overflow-hidden">
+    <div className="fixed inset-x-0 top-0 overflow-hidden" style={{ height: "100dvh" }}>
       <div
         ref={containerRef}
         className="transition-transform duration-700 ease-in-out"
-        style={{ transform: `translateY(calc(-${translateVh}vh - ${translatePx}px))` }}
+        style={{ transform: `translateY(calc(-${translateVh}dvh - ${translatePx}px))` }}
       >
         {children.map((child, index) => {
           const isLast = lastSectionAuto && index === lastIndex;
@@ -129,7 +129,7 @@ export default function FullPageScroll({ children, lastSectionAuto = false, onSe
             );
           }
           return (
-            <div key={index} className="h-screen w-full">
+            <div key={index} style={{ height: "100dvh" }} className="w-full">
               {child}
             </div>
           );

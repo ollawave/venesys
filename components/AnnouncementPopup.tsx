@@ -3,9 +3,54 @@
 import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 
+function ImageModal({ onClose }: { onClose: () => void }) {
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const timer = requestAnimationFrame(() => setIsVisible(true));
+    return () => cancelAnimationFrame(timer);
+  }, []);
+
+  const handleClose = () => {
+    setIsVisible(false);
+    setTimeout(onClose, 500);
+  };
+
+  return createPortal(
+    <div
+      className={`fixed inset-0 z-[10000] flex items-center justify-center bg-black/70 px-4 transition-opacity duration-500 ease-in-out ${
+        isVisible ? "opacity-100" : "opacity-0"
+      }`}
+      onClick={handleClose}
+    >
+      <div
+        className={`relative max-w-3xl w-full max-h-[85vh] transition-all duration-500 ease-in-out ${
+          isVisible ? "opacity-100 scale-100" : "opacity-0 scale-95"
+        }`}
+        onClick={(e) => e.stopPropagation()}
+      >
+        <button
+          onClick={handleClose}
+          className="absolute -top-10 right-0 hover:opacity-80 transition cursor-pointer"
+          aria-label="닫기"
+        >
+          <img src="/images/close.png" alt="" className="w-4 h-4" />
+        </button>
+        <img
+          src="/images/20260811.png"
+          alt="신주식 발행 공고"
+          className="w-full h-auto max-h-[85vh] object-contain"
+        />
+      </div>
+    </div>,
+    document.body
+  );
+}
+
 export default function AnnouncementPopup() {
   const [isOpen, setIsOpen] = useState(true);
   const [isVisible, setIsVisible] = useState(false);
+  const [showImage, setShowImage] = useState(false);
 
   useEffect(() => {
     const timer = requestAnimationFrame(() => setIsVisible(true));
@@ -19,7 +64,9 @@ export default function AnnouncementPopup() {
 
   if (!isOpen) return null;
 
-  return createPortal(
+  return (
+    <>
+      {createPortal(
     <div
       className={`fixed inset-0 z-[9999] flex items-center justify-center bg-black/60 px-6 transition-opacity duration-500 ease-in-out ${
         isVisible ? "opacity-100" : "opacity-0"
@@ -49,20 +96,20 @@ export default function AnnouncementPopup() {
           <p className="text-[17px]">작성자: VENESYS</p>
           <p className="text-[17px]">작성일: 2026년 8월 11일</p>
           <p className="pt-4 md:pt-6 text-center pr-2">
-            <a
-              href="/20260811.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
-              title="파일 다운로드"
-              download
-              className="inline-block w-full mx-auto px-6 py-2.5 border border-white text-[14px] md:text-[16px] font-medium hover:bg-white hover:text-black transition-colors duration-300"
+            <button
+              type="button"
+              onClick={() => setShowImage(true)}
+              className="inline-block w-full mx-auto px-6 py-2.5 border border-white text-[14px] md:text-[16px] font-medium hover:bg-white hover:text-black transition-colors duration-300 cursor-pointer"
             >
               자세히 보기
-            </a>
+            </button>
           </p>
         </div>
       </div>
     </div>,
     document.body
+      )}
+      {showImage && <ImageModal onClose={() => setShowImage(false)} />}
+    </>
   );
 }

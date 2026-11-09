@@ -10,6 +10,7 @@ import Business from "@/components/Business";
 import Sns from "@/components/Sns";
 import Inquiry from "@/components/Inquiry";
 import Footer from "@/components/Footer";
+import AnnouncementPopup from "@/components/AnnouncementPopup";
 
 export default function Home() {
   const [locale, setLocale] = useState<Locale>("ko");
@@ -43,6 +44,7 @@ export default function Home() {
 
   return (
     <>
+      <AnnouncementPopup />
       <Navigation locale={locale} onLocaleChange={changeLocale} isFirstSection={currentSection === 0} currentSection={currentSection} onNavigate={handleNavigate} />
       <FullPageScroll lastSectionAuto onSectionChange={setCurrentSection} goToSection={goToSection}>
         <Hero locale={locale} isActive={currentSection === 0} />
